@@ -9,10 +9,16 @@ while true
   current_coords_input = gets.chomp
   break if current_coords_input == ""
   current_coords = current_coords_input.split(" ")
-  rover.current_pos(current_coords[0].to_i, current_coords[1].to_i, current_coords[2])
+  cur_x = current_coords[0].to_i
+  cur_y = current_coords[1].to_i
+  cur_d = current_coords[2]
+  rover.set_current_pos(cur_x, cur_y, cur_d)
   
   commands = gets.chomp
-  rover.operate(commands)
+  rover.follow_commands(commands)
   
-  puts rover.position[:cur_x].to_s + " " + rover.position[:cur_y].to_s + " " + rover.position[:cur_d].to_s
+  pos_x = rover.position[:cur_x].to_s
+  pos_y = rover.position[:cur_y].to_s
+  direction = rover.position[:cur_d]
+  puts pos_x + " " + pos_y + " " + direction
 end

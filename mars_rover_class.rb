@@ -24,7 +24,7 @@ class MarsRover
     @max_y = max_y
   end
 
-  def current_pos(cur_x, cur_y, cur_d)
+  def set_current_pos(cur_x, cur_y, cur_d)
     @position = {
       :cur_x => cur_x,
       :cur_y => cur_y,
@@ -67,7 +67,7 @@ class MarsRover
     return { :x => x, :y => y }
   end
 
-  def operate(commands)
+  def follow_commands(commands)
     commands.split("").each do |i|
       if i == "L" || i == "R"
         rotate(i)
