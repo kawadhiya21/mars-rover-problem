@@ -86,4 +86,14 @@ class TestMarsRover < Test::Unit::TestCase
     assert_equal rover.position[:cur_y], 1
     assert_equal rover.position[:cur_d].to_s, "E"
   end
+
+  def test_throw_exception_if_rover_goes_out_of_boundary
+    rover = MarsRover.new(5, 5)
+    rover.set_current_pos(1, 2, "N")
+    begin
+        rover.follow_commands("LMLMLMLMMMMMMMM")
+    rescue Exception => e
+        assert_equal e.message, "Out of bounds"
+    end
+  end
 end
