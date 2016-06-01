@@ -19,6 +19,8 @@ class MarsRover
   }
 
   attr_accessor :position
+  attr_accessor :max_x
+  attr_accessor :max_y
   def initialize(max_x, max_y)
     @max_x = max_x
     @max_y = max_y
@@ -40,6 +42,8 @@ class MarsRover
     if new_x <= @max_x && new_y <= @max_y && new_x >= 0 && new_y >= 0
       @position[:cur_x] = new_x
       @position[:cur_y] = new_y
+    else
+      raise Exception.new("Out of bounds")
     end
   end
 
